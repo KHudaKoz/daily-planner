@@ -1,2 +1,2 @@
 # daily-planner
-Dinging a planner which possesses the ability to add important events so that and individual can manage there time effectively.
+Dinging a planner that possesses the ability to add important events so that an individual can manage their time effectively.
