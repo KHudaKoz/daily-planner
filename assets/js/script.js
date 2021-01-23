@@ -76,8 +76,7 @@ var updateBackground = function () {
     // Purposely to reformate
       for (let j = 9; j < 18; j++) {
       if (array [i].hour == j) {
-      $("#" + j) .val(array [i].content)
-    }
+      $("#" + j) .val(array [i].conten    }
     }
   }
   }
