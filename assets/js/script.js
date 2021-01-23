@@ -1,8 +1,6 @@
-
-
 // CREATE UNIVERAL ARRAY... WILL USE FOR STORAGE
 var data = [];
-// CALL MOMMENT.JS & ESTABLISH DATES
+// CALL MOMMENT.JS & ESTABLISH DATES AND FORMAT
 var updateInfo = function () {
     date = moment();
     datetime.html(date.format('dddd, MMMM Do YYYY, h:mm:ss a'));
@@ -15,16 +13,17 @@ $(document).ready(function(){
     setInterval(updateInfo, 1000);
     updateBackground();
 });
-// Creat for loop but create var 
+// CREATE FOR LOOP TO SORT THROUH ate because we needed sort loop 
 var updateBackground = function () {
-    // var it need be above so that we call the spefic hour
+    // NEEDED LOCAL VAR TO CONVERT LINE SIX CLOCK TO A SPECIFIC HOUR FOR FOR LOOP. 
     let hour = parseInt(date.format('H')); 
-    hour += 12
+    //THIS IS A TEST TO INSUTRE THE BACK GROUNDS ARE CURRENTLY FUNCTIONING HOUR (-/+)=(HOURS)
+    hour -= 6
     for (i = 9; i < 18; i++) {
     var textArea = $("#" + i); 
 // condition 1
-  if (i < hour) {
-      textArea.addClass("past") 
+    if (i < hour) {
+    textArea.addClass("past") 
   }
 // conditon 2 
   else if (i === hour) {
@@ -38,19 +37,14 @@ var updateBackground = function () {
 }
 }
 
-
-
+// EVENT LISTNER TO START PROCESS OF STORAGE. 
 $("button").on('click', function(){ 
   let btn = $(this)
   let hour = btn.data('hour')
-  //console.log ($(this).data('hour'))
+         //console.log ($(this).data('hour'))
   let content = $("#" + hour).val()
 
- 
-        
-      
-
-// Is content for the spefic content/hour bolean
+  // Is content for the spefic content/hour bolean
     var duplicate = false
 // check contnet   
 for (let i= 0; i < data.length; i++) {
@@ -71,7 +65,18 @@ if ( !duplicate ){
 localStorage.setItem('array', JSON.stringify(data));
 
 })  // git content from the text area
+var array = JSON.parse(localStorage.getItem('array'))
+if (array) { 
+  //For data array object being retreived from local 
+  for (let i = 0; i < array.length; i++) {
+  // Purposely to reformate
+    for (let j = 9; j < 18; j++) {
+     if (array [i].hour == j) {
+    $("#" + j) .val(array [i].content)
+   }
+  }
+}
+}
 
 // local storage .get itmen 
 // call array data
-// .ready
