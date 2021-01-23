@@ -68,12 +68,12 @@ var updateBackground = function () {
   }) 
    
   // START OF GET ITEM FROM LOCAL STORAGE
-  // SET VARABLE  
+  // SET VARABLE FOR RETREIVE 
   var array = JSON.parse(localStorage.getItem('array'))
   if (array) { 
-    //For data array object being retreived from local 
+    //FOR LOOP FOR LOCAL STORAGE INDEX WHICH BEGINS AT ZERO
     for (let i = 0; i < array.length; i++) {
-    // Purposely to reformate
+    // NESTED FOR LOOP FOR 
       for (let j = 9; j < 18; j++) {
       if (array [i].hour == j) {
       $("#" + j) .val(array [i].content)
@@ -82,4 +82,4 @@ var updateBackground = function () {
   }
   }
 
-
+// STILL HAVING ISSUE WITH SECOND RELOAD... Retrieve and Render
