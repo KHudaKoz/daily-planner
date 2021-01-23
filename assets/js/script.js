@@ -82,5 +82,3 @@ var updateBackground = function () {
   }
   }
 
-// local storage .get itmen 
-// call array data
