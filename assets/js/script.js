@@ -78,5 +78,3 @@ if (array) {
 }
 }
 
-// local storage .get itmen 
-// call array data
