@@ -18,7 +18,7 @@ var updateBackground = function () {
     // NEEDED LOCAL VAR TO CONVERT LINE SIX CLOCK TO A SPECIFIC HOUR FOR FOR LOOP. 
     let hour = parseInt(date.format('H')); 
     //THIS IS A TEST TO INSUTRE THE BACK GROUNDS ARE CURRENTLY FUNCTIONING HOUR (-/+)=(HOURS)
-    hour -= 6
+    hour += 10
       for (i = 9; i < 18; i++) {
         let textArea = $("#" + i); 
       // CHECK FOR CONDITION ONE/IF TRUE LINK TO CSS PAST
