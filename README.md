@@ -45,7 +45,7 @@ Code was presented as a codebase develop pack and was ask to refract code and ma
 ​
 You can view the change by visiting live sites or going to the repository.   
 
-![Image Of Project](assets/image/code.png)
+![Image Of Project](aassets\images\dialy-planner.png)
 
 ​
 
