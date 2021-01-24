@@ -1,5 +1,9 @@
 // CREATE UNIVERAL ARRAY... WILL USE FOR STORAGE
-var data = [];
+var reloadExisting = JSON.parse(localStorage.getItem('array'))
+
+// RELOADEXISTING NEED A TRUE FALSE WITH AN IF 
+var data = reloadExisting ? [...reloadExisting]: []
+
 // CALL MOMMENT.JS & ESTABLISH DATES AND FORMAT
 var updateInfo = function () {
     date = moment();
@@ -13,12 +17,13 @@ var updateInfo = function () {
     setInterval(updateInfo, 1000);
     updateBackground();
     });
+
 // CREATE FOR LOOP TO SORT THROUH ate because we needed sort loop 
 var updateBackground = function () {
     // NEEDED LOCAL VAR TO CONVERT LINE SIX CLOCK TO A SPECIFIC HOUR FOR FOR LOOP. 
     let hour = parseInt(date.format('H')); 
     //THIS IS A TEST TO INSUTRE THE BACK GROUNDS ARE CURRENTLY FUNCTIONING HOUR (-/+)=(HOURS)
-    hour += 10
+    //hour-= 10
       for (i = 9; i < 18; i++) {
         let textArea = $("#" + i); 
       // CHECK FOR CONDITION ONE/IF TRUE LINK TO CSS PAST
@@ -41,12 +46,11 @@ var updateBackground = function () {
   $("button").on('click', function(){ 
     let btn = $(this)
     let hour = btn.data('hour')
-
-          //console.log ($(this).data('hour'))
-
     let content = $("#" + hour).val()
 
-// START OF STORAGE 
+ //console.log ($(this).data('hour'))
+
+ // START OF STORAGE 
     // IS THE CONTENT LOCAL STORAGE/TRUE OR FALSE IF SO DO LOOP
       var duplicate = false   
       for (let i= 0; i < data.length; i++) {
@@ -65,21 +69,21 @@ var updateBackground = function () {
    
     //SET TO STORAGE
     localStorage.setItem('array', JSON.stringify(data));
-  }) 
+   }) 
    
   // START OF GET ITEM FROM LOCAL STORAGE
   // SET VARABLE FOR RETREIVE 
   var array = JSON.parse(localStorage.getItem('array'))
-  if (array) { 
-    //FOR LOOP FOR LOCAL STORAGE INDEX WHICH BEGINS AT ZERO
-    for (let i = 0; i < array.length; i++) {
-    // NESTED FOR LOOP FOR 
-      for (let j = 9; j < 18; j++) {
-      if (array [i].hour == j) {
-      $("#" + j) .val(array [i].content)
+      if (array) { 
+        //FOR LOOP FOR LOCAL STORAGE INDEX WHICH BEGINS AT ZERO
+        for (let i = 0; i < array.length; i++) {
+        // NESTED FOR LOOP FOR 
+          for (let j = 9; j < 18; j++) {
+          if (array [i].hour == j) {
+          $("#" + j) .val(array [i].content)
+        }
+      }
     }
-    }
-  }
   }
 
 // STILL HAVING ISSUE WITH SECOND RELOAD... Retrieve and Render
